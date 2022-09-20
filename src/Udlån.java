@@ -1,7 +1,6 @@
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Udlån {
     static void udlånBog() {
@@ -32,4 +31,64 @@ public class Udlån {
             e.printStackTrace();
         }
     }
-}
+    public static void byOversigt(){
+        List<String> byListe = new ArrayList<>();
+
+        String sql = "select * from oversigt where ByNavn = ?";
+
+        try (Connection con = ConnectionConfig.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {           // https://en.wikipedia.org/wiki/Prepared_statement
+
+            ps.setString(1, Input.getString("Skriv et bynavn"));
+
+            ResultSet resultSet = ps.executeQuery();   //https://javaconceptoftheday.com/difference-between-executequery-executeupdate-execute-in-jdbc/
+
+            while (resultSet.next()) {
+                String Navn = resultSet.getString("Navn");
+                String ByNavn = resultSet.getString("ByNavn");
+                String Title = resultSet.getString("Title");
+
+
+                byListe.add(Navn + " : " + ByNavn + " : " + Title);
+
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+
+        for (String s : byListe) {
+            System.out.println(s);
+        }
+    }
+    public static void navnOversigt(){
+        List<String> byListe = new ArrayList<>();
+
+        String sql = "select * from oversigt where Navn = ?";
+
+        try (Connection con = ConnectionConfig.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {           // https://en.wikipedia.org/wiki/Prepared_statement
+
+            ps.setString(1, Input.getString("Skriv et udlåner navn"));
+
+            ResultSet resultSet = ps.executeQuery();   //https://javaconceptoftheday.com/difference-between-executequery-executeupdate-execute-in-jdbc/
+
+            while (resultSet.next()) {
+                String Navn = resultSet.getString("Navn");
+                String ByNavn = resultSet.getString("ByNavn");
+                String Title = resultSet.getString("Title");
+
+
+                byListe.add(Navn + " : " + ByNavn + " : " + Title);
+
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+
+        for (String s : byListe) {
+            System.out.println(s);
+        }
+    }
+    }

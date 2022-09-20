@@ -6,7 +6,7 @@ public class Menu {
                 "Opret Låner (1) / Udskriv Låner (2) / Slet Låner (3) \n" +
                 "Opret By (4) / Udskriv Byer (5)\n" +
                 "Opret Bog (6) / Udskriv bøger (7) / Slet bog (8) \n" +
-                "Udlån bog (9)");
+                "Udlån bog (9) / Udlånt ud fra by (10) / Udlånt ud fra lånernavn (11)");
 
         switch (svar){
             case "1":
@@ -35,6 +35,12 @@ public class Menu {
                 break;
             case "9":
                 Udlån.udlånBog();
+                break;
+            case "10":
+                Udlån.byOversigt();
+                break;
+            case "11":
+                Udlån.navnOversigt();
                 break;
             default:
                 System.out.println("ugyldigt valg, prøv igen");
