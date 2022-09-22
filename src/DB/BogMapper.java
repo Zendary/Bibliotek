@@ -1,9 +1,13 @@
+package DB;
+
+import MyUtil.Input;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bøger {
-    static void udskrivBøger() {
+public class BogMapper {
+    protected static void udskrivBøger() {
         List<String> bogListe = new ArrayList<>();
 
         String sql = "select * from bogtabel ";
@@ -33,7 +37,7 @@ public class Bøger {
         }
     }
 
-    static void sletBog() {
+    protected static void sletBog() {
         udskrivBøger();
 
         String sql = "delete from bogtabel where Bogid = ?";
@@ -61,7 +65,7 @@ public class Bøger {
         udskrivBøger();
     }
 
-    static void opretBog() {
+    protected static void opretBog() {
         String sql = "INSERT INTO bogtabel (Forfatter, Title, UdgivelsesÅr ) VALUES (?, ?, ?)";
 
 

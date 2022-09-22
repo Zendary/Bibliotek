@@ -1,9 +1,13 @@
+package DB;
+
+import MyUtil.Input;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Udlån {
-    static void udlånBog() {
+    protected static void udlånBog() {
         String sql = "INSERT INTO udlåntabel (Bogid, Lånerid) VALUES (?, ?)";
 
 
@@ -31,7 +35,7 @@ public class Udlån {
             e.printStackTrace();
         }
     }
-    public static void byOversigt(){
+    protected static void byOversigt(){
         List<String> byListe = new ArrayList<>();
 
         String sql = "select * from oversigt where ByNavn = ?";
@@ -61,7 +65,7 @@ public class Udlån {
             System.out.println(s);
         }
     }
-    public static void navnOversigt(){
+    protected static void navnOversigt(){
         List<String> byListe = new ArrayList<>();
 
         String sql = "select * from oversigt where Navn = ?";

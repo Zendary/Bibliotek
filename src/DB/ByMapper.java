@@ -1,9 +1,13 @@
+package DB;
+
+import MyUtil.Input;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class By {
-    static void udskrivByer() {
+public class ByMapper {
+   protected static void udskrivByer() {
         List<String> byListe = new ArrayList<>();
 
         String sql = "select * from postnrtabel ";
@@ -32,7 +36,7 @@ public class By {
         }
     }
 
-    static void opretBy() {
+    protected static void opretBy() {
         String sql = "INSERT INTO postnrtabel (PostNr, ByNavn) VALUES (?, ?)";
 
 

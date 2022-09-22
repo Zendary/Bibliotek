@@ -1,9 +1,13 @@
+package DB;
+
+import MyUtil.Input;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lånere {
-    static void sletLåner() {
+public class LånerMapper {
+    protected static void sletLåner() {
         udskrivLånere();
 
         String sql = "delete from lånertabel where lånerid = ?";
@@ -31,7 +35,7 @@ public class Lånere {
         udskrivLånere();
     }
 
-    static void udskrivLånere() {
+    protected static void udskrivLånere() {
         List<String> lånerListe = new ArrayList<>();
 
         String sql = "select * from lånertabel ";
@@ -61,7 +65,7 @@ public class Lånere {
         }
     }
 
-    static void opretLåner() {
+    protected static void opretLåner() {
         String sql = "INSERT INTO lånertabel (Navn, Adresse, PostNr ) VALUES (?, ?, ?)";
 
 

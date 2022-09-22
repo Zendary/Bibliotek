@@ -1,5 +1,8 @@
+import DB.*;
+import MyUtil.Input;
+
 public class Menu {
-    static void menu() {
+    public static void menu() {
         String svar;
 
         svar = Input.getString("Hvad ønsker du? \n"+
@@ -10,37 +13,37 @@ public class Menu {
 
         switch (svar){
             case "1":
-                Lånere.opretLåner();
+                Facade.opretLåner();
                 break;
             case "2":
-                Lånere.udskrivLånere();
+                Facade.udskrivLåner();
                 break;
             case "3":
-                Lånere.sletLåner(); //kan ikke slette hvis der er udlånt bog til dem
+                Facade.sletLåner(); //kan ikke slette hvis der er udlånt bog til dem
                 break;
             case "4":
-                By.opretBy(); //virker ikke
+                Facade.opretBy();
                 break;
             case "5":
-                By.udskrivByer();
+                Facade.udskrivBy();
                 break;
             case "6":
-                Bøger.opretBog();
+                Facade.opretBog();
                 break;
             case "7":
-                Bøger.udskrivBøger();
+                Facade.udskrivBøger();
                 break;
             case "8":
-                Bøger.sletBog(); //kan ikke slette bog der er udlånt
+                Facade.sletBog(); //kan ikke slette bog der er udlånt
                 break;
             case "9":
-                Udlån.udlånBog();
+                Facade.udlånBog();
                 break;
             case "10":
-                Udlån.byOversigt();
+                Facade.byOversigt();
                 break;
             case "11":
-                Udlån.navnOversigt();
+                Facade.navnOversigt();
                 break;
             default:
                 System.out.println("ugyldigt valg, prøv igen");
