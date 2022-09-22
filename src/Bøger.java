@@ -36,12 +36,12 @@ public class Bøger {
     static void sletBog() {
         udskrivBøger();
 
-        String sql = "delete from bogtabel where Title = ?";
+        String sql = "delete from bogtabel where Bogid = ?";
 
         try (Connection con = ConnectionConfig.getConnection();
              PreparedStatement ps = con.prepareStatement(sql);) {
 
-            String bogTitle = Input.getString("Skriv titlen på den bog der skal slettes");
+            String bogTitle = Input.getString("Skriv ID på den bog der skal slettes");
             ps.setString(1, bogTitle );
 
 

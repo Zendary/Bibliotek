@@ -6,12 +6,12 @@ public class Lånere {
     static void sletLåner() {
         udskrivLånere();
 
-        String sql = "delete from lånertabel where Navn = ?";
+        String sql = "delete from lånertabel where lånerid = ?";
 
         try (Connection con = ConnectionConfig.getConnection();
              PreparedStatement ps = con.prepareStatement(sql);) {
 
-            String lånerNavn = Input.getString("Skriv navnet på låner der skal slettes");
+            String lånerNavn = Input.getString("Skriv ID på låner der skal slettes");
             ps.setString(1, lånerNavn );
 
 
